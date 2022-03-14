@@ -15,12 +15,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
     
-    command: 
-      - sh
-      - /data/mysql/init.sh
-      # 运行 oadb.sql
-      - /data/mysql/oadb.sql
-    
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./oadb.sql:/oadb.sql
