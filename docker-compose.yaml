@@ -25,7 +25,8 @@ services:
 
     # environment:
     #   - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
-
+    links:
+      - mysql
 
   # nginx
   nginx:
@@ -36,6 +37,5 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
 
     links:
-      - mysql:mysql
       - java8:java
       
