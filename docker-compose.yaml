@@ -2,13 +2,16 @@ version: '3.7'
 services:
   # java 8
 
+  # # mysql5.7
   mysql:
-    image: ccr.ccs.tencentyun.com/sc-java/sc-java1:V1.0.2
+    # 使用dockerfile
+    build: ./mysql/Dockerfile
+    # image: mysql:5.7
+    # image: ccr.ccs.tencentyun.com/sc-java/sc-java1:V1.0.2
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
-    # 将本地的数据库导入到远程的数据库中
     
     command: 
       - sh
