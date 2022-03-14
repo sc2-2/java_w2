@@ -1,6 +1,8 @@
 FROM mysql:5.7
 
-# 将本地文件 oadb.sql 映射到数据库
+# 目录映射
+VOLUME ["/data/mysql"]
+
 # VOLUME ["/data/oadb.sql"]
 ADD ./oadb.sql /oadb.sql
 
@@ -19,3 +21,5 @@ RUN mysql -uroot -p123456 -e "create database oadb"
 # 将数据库导入到数据库
 RUN mysql -uroot -p123456 oadb < /var/lib/mysql/oadb.sql
 
+# 端口映射
+EXPOSE 3306
