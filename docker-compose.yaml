@@ -35,7 +35,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-
+      - ./ssl/:/etc/nginx/ssl/
     links:
       - java:java
       
