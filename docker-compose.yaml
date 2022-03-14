@@ -5,7 +5,9 @@ services:
   # # mysql5.7
   mysql:
     # 使用dockerfile
-    build: ./mysql/Dockerfile
+    build:
+      context: ./mysql
+      dockerfile: ./Dockerfile
     # image: mysql:5.7
     # image: ccr.ccs.tencentyun.com/sc-java/sc-java1:V1.0.2
     ports:
