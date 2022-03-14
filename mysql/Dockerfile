@@ -1,7 +1,8 @@
 FROM mysql:5.7
 
 # 将本地文件 oadb.sql 映射到数据库
-VOLUME ["/data/oadb.sql"]
+# VOLUME ["/data/oadb.sql"]
+ADD ./oadb.sql /oadb.sql
 
 # 设置密码为 123456
 ENV MYSQL_ROOT_PASSWORD=123456
