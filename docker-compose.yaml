@@ -8,8 +8,19 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
+    # 将本地的数据库导入到远程的数据库中
+    
+    command: 
+      - sh
+      - /data/mysql/init.sh
+      # 运行 oadb.sql
+      - /data/mysql/oadb.sql
+    
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./oadb.sql:/oadb.sql
 
-  java8:
+  java:
     image: java:8-jdk-alpine
     command: java -jar /app.jar
     ports:
@@ -20,13 +31,12 @@ services:
     # 在容器中运行 java -jar /app.jar
     command: 
       java -jar /app.jar
-    # command: 
-    #   java -jar /app.jar
+
+    links:
+      - mysql
 
     # environment:
     #   - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
-    links:
-      - mysql
 
   # nginx
   nginx:
@@ -37,5 +47,5 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
 
     links:
-      - java8:java
+      - java:java
       
