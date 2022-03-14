@@ -10,9 +10,10 @@ services:
       MYSQL_ROOT_PASSWORD: "123456"
     # 将本地data绑定
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./sqldata/mysql:/var/lib/mysql
       
   # java 8
+  # TODO JAVA 有问题始终是无法进行成功运行jar
   java:
     image: java:8-jdk-alpine
     command: java -jar /app.jar
@@ -20,10 +21,6 @@ services:
       - "8080:8080"
     volumes:
       - ./app.jar:/app.jar
-
-    # 在容器中运行 java -jar /app.jar
-    command: 
-      java -jar /app.jar
 
     links:
       - mysql
