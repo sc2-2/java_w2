@@ -1,6 +1,14 @@
 version: '3.7'
 services:
   # java 8
+
+  mysql:
+    image: ccr.ccs.tencentyun.com/sc-java/sc-java1:V1.0.2
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+
   java8:
     image: java:8-jdk-alpine
     command: java -jar /app.jar
@@ -18,12 +26,6 @@ services:
     # environment:
     #   - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
 
-  mysql:
-    image: ccr.ccs.tencentyun.com/sc-java/sc-java1:V1.0.2
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: "123456"
 
   # nginx
   nginx:
