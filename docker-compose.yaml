@@ -1,0 +1,39 @@
+8version: '1.0.1'
+services:
+  # java 8
+  java8:
+    image: java:8-jdk-alpine
+    command: java -jar /app.jar
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app.jar:/app.jar
+
+    # 在容器中运行 java -jar /app.jar
+    command: 
+      java -jar /app.jar
+    # command: 
+    #   java -jar /app.jar
+
+    # environment:
+    #   - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
+
+  mysql:
+    image: ccr.ccs.tencentyun.com/sc-java/sc-java1
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+
+  # nginx
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+    links:
+      - mysql:mysql
+      - java8:java
+      
