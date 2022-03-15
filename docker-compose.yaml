@@ -11,14 +11,16 @@ services:
       MYSQL_DATABASE: "oadb"
 
     # 允许远程访问
-    command: --default-authentication-plugin=mysql_native_password
-
+    command: 
+      - "--default-authentication-plugin=mysql_native_password"
+      - "mysql -h 172.17.0.1 -u root -p123456 oadb< /oadb.sql"
+      
     # 将本地data绑定
     volumes:
       - ./sqldata/mysql:/var/lib/mysql
+      - ./oadb.sql:/oadb.sql
       
   # java 8
-  # TODO JAVA 有问题始终是无法进行成功运行jar
   java:
     image: java
     command: java -jar /app.jar
