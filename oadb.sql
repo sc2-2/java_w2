@@ -14,6 +14,8 @@
  Date: 12/03/2022 17:28:05
 */
 
+CREATE oadb
+use oadb
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 

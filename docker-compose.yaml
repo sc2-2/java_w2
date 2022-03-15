@@ -10,7 +10,11 @@ services:
       MYSQL_ROOT_PASSWORD: "123456"
 
     # 允许远程访问
-    command: --default-authentication-plugin=mysql_native_password
+    command: 
+      - "--default-authentication-plugin=mysql_native_password"
+      # 导入 sql
+      - "--init-file=/oadb.sql"
+      # - "mysql -h 172.17.0.1 -u root -p12345 oadb< /oadb.sql" "
 
     # 将本地data绑定
     volumes:
