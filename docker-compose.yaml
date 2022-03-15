@@ -22,6 +22,7 @@ services:
     # 将本地data绑定
     volumes:
       - ./sqldata/mysql:/var/lib/mysql
+      - ./sqldata/mysql/oadb.sql:/oadb.sql
       
   # java 8
   # TODO JAVA 有问题始终是无法进行成功运行jar
