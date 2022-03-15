@@ -1,16 +1,16 @@
 version: '3.7'
 services:
 
-  # # # mysql5.7
-  mysql:
-    image: mysql:5.7
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: "123456"
-    # 将本地data绑定
-    volumes:
-      - ./sqldata/mysql:/var/lib/mysql
+  # # # # mysql5.7
+  # mysql:
+  #   image: mysql:5.7
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "123456"
+  #   # 将本地data绑定
+  #   volumes:
+  #     - ./sqldata/mysql:/var/lib/mysql
       
   # java 8
   # TODO JAVA 有问题始终是无法进行成功运行jar
@@ -22,9 +22,9 @@ services:
     volumes:
       - ./app.jar:/app.jar
 
-    links:
-      - mysql
-
+    # links:
+    #   - mysql
+    # 
     # environment:
     #   - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
 
