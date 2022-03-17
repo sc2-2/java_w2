@@ -36,10 +36,6 @@ services:
 
     # environment:
     #   - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
-    environment:
-      - JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
-      - JAVA_OPTS="-Dspring.profiles.active=prod"
-      - JAVA_OPTS="-Dspring.datasource.url=jdbc:mysql://mysql:3306/oadb?useUnicode=true&characterEncoding=utf8&useSSL=false"
 
   # nginx
   nginx:
